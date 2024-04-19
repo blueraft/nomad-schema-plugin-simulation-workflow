@@ -26,8 +26,8 @@ from nomad.metainfo import (
     MEnum,
     Reference,
     MSection,
-    HDF5Reference,
 )
+from nomad.datamodel.hdf5 import HDF5Dataset
 from nomad.datamodel.metainfo.workflow import Link
 from runschema.system import System, AtomsGroup
 from runschema.calculation import (
@@ -401,7 +401,7 @@ class Lambdas(ArchiveSection):
 
     type = Quantity(
         type=MEnum(
-            "output", "coulomb", "vdw", "bonded", "restraint", "mass", "temperature"
+            'output', 'coulomb', 'vdw', 'bonded', 'restraint', 'mass', 'temperature'
         ),
         shape=[],
         description="""
@@ -451,7 +451,7 @@ class FreeEnergyCalculationParameters(ArchiveSection):
     m_def = Section(validate=False)
 
     type = Quantity(
-        type=MEnum("alchemical", "umbrella_sampling"),
+        type=MEnum('alchemical', 'umbrella_sampling'),
         shape=[],
         description="""
         Specifies the type of workflow. Allowed values are:
@@ -1037,7 +1037,7 @@ class FreeEnergyCalculations(TrajectoryProperty):
     )
 
     value_total_energy_magnitude = Quantity(
-        type=HDF5Reference,
+        type=HDF5Dataset,
         shape=[],
         description="""
         Value of the total energy for the present lambda state. The expected dimensions are ["n_frames"].
@@ -1046,7 +1046,7 @@ class FreeEnergyCalculations(TrajectoryProperty):
     )
 
     value_PV_energy_magnitude = Quantity(
-        type=HDF5Reference,
+        type=HDF5Dataset,
         shape=[],
         description="""
         Value of the pressure-volume energy (i.e., P*V) for the present lambda state. The expected dimensions are ["n_frames"].
@@ -1055,7 +1055,7 @@ class FreeEnergyCalculations(TrajectoryProperty):
     )
 
     value_total_energy_differences_magnitude = Quantity(
-        type=HDF5Reference,
+        type=HDF5Dataset,
         shape=[],
         description="""
         Values correspond to the difference in total energy between each specified lambda state
@@ -1066,7 +1066,7 @@ class FreeEnergyCalculations(TrajectoryProperty):
     )
 
     value_total_energy_derivative_magnitude = Quantity(
-        type=HDF5Reference,
+        type=HDF5Dataset,
         shape=[],
         description="""
         Value of the derivative of the total energy with respect to lambda, evaluated for the current
