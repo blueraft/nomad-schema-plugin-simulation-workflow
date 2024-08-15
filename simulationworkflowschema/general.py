@@ -19,7 +19,7 @@ from typing import List
 import numpy as np
 
 from nomad.datamodel.data import ArchiveSection
-from nomad.metainfo import SubSection, Section, Quantity, Reference
+from nomad.metainfo import SubSection, Section, Quantity, Reference, Package
 from nomad.datamodel.metainfo.common import FastAccess
 from nomad.datamodel.metainfo.workflow import Workflow, Link, Task, TaskReference
 from runschema.method import (
@@ -39,6 +39,9 @@ from runschema.calculation import (
     SpinSpinCoupling,
     MagneticSusceptibility,
 )
+
+
+m_package = Package()
 
 
 def resolve_difference(values):
@@ -497,3 +500,6 @@ class MagneticOutputs(SimulationWorkflowResults):
         Reference to the magnetic susceptibility tensors.
         """,
     )
+
+
+m_package.__init_metainfo__()

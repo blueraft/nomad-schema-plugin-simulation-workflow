@@ -70,5 +70,5 @@ line-ending = "auto"
 [tool.setuptools.packages.find]
 include = ["simulationworkflowschema*"]
 
-[tool.setuptools.package-data]
-simulationworkflowschema = ["*/nomad_plugin.yaml"]
+[project.entry-points.'nomad.plugin']
+simulationworkflowschema = "simulationworkflowschema:simulationworkflow_schema_entry_point"
