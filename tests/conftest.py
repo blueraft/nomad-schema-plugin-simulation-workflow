@@ -75,6 +75,8 @@ from runschema.method import (
 )
 from runschema.system import AtomsGroup, System, Atoms
 from nomad.datamodel.metainfo.workflow import Link, TaskReference
+import simulationworkflowschema
+simulationworkflowschema.simulationworkflow_schema_entry_point.load()
 from simulationworkflowschema.molecular_dynamics import (
     DiffusionConstantValues,
     MeanSquaredDisplacement,
