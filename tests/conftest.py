@@ -85,28 +85,16 @@ from simulationworkflowschema.molecular_dynamics import (
     RadialDistributionFunctionValues,
 )
 from simulationworkflowschema.equation_of_state import EOSFit
-from simulationworkflowschema import (
-    MolecularDynamicsMethod,
-    MolecularDynamicsResults,
-    SinglePoint,
-    GeometryOptimization,
-    GeometryOptimizationMethod,
-    Elastic,
-    ElasticResults,
-    MolecularDynamics,
-    EquationOfState,
-    EquationOfStateResults,
-    DFTPlusGWMethod,
-    DFTPlusGW as GWworkflow,
-    DFTPlusTBPlusDMFTMethod,
-    DFTPlusTBPlusDMFT as DMFTworkflow,
-    PhotonPolarization,
-    PhotonPolarizationMethod,
-    PhotonPolarizationResults,
-    XS as XSworkflow,
-    DMFTPlusMaxEntMethod,
-    DMFTPlusMaxEnt as MaxEntworkflow,
-)
+from simulationworkflowschema.molecular_dynamics import MolecularDynamics, MolecularDynamicsMethod, MolecularDynamicsResults
+from simulationworkflowschema.single_point import SinglePoint
+from simulationworkflowschema.geometry_optimization import GeometryOptimization, GeometryOptimizationMethod
+from simulationworkflowschema.elastic import Elastic, ElasticResults
+from simulationworkflowschema.equation_of_state import EquationOfState, EquationOfStateResults
+from simulationworkflowschema.gw import DFTPlusGWMethod, DFTPlusGW as GWworkflow
+from simulationworkflowschema.dmft import DFTPlusTBPlusDMFTMethod, DFTPlusTBPlusDMFT as DMFTworkflow
+from simulationworkflowschema.photon_polarization import PhotonPolarization, PhotonPolarizationMethod, PhotonPolarizationResults
+from simulationworkflowschema.xs import XS as XSworkflow
+from simulationworkflowschema.max_ent import DMFTPlusMaxEntMethod, DMFTPlusMaxEnt as MaxEntworkflow
 
 
 LOGGER = get_logger(__name__)
