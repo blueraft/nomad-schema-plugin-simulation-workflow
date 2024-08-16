@@ -73,6 +73,8 @@ from runschema.method import (
     DFT,
     GW,
 )
+import runschema
+runschema.run_schema_entry_point.load()
 from runschema.system import AtomsGroup, System, Atoms
 from nomad.datamodel.metainfo.workflow import Link, TaskReference
 import simulationworkflowschema
