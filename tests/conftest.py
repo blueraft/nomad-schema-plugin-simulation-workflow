@@ -22,6 +22,12 @@ from ase import Atoms as aseAtoms
 import ase.build
 import re
 
+# Load schemas first
+import runschema
+runschema.run_schema_entry_point.load()
+import simulationworkflowschema
+simulationworkflowschema.simulationworkflow_schema_entry_point.load()
+
 from nomad.units import ureg
 from nomad.normalizing import normalizers
 from nomad.utils import get_logger
@@ -73,12 +79,8 @@ from runschema.method import (
     DFT,
     GW,
 )
-import runschema
-runschema.run_schema_entry_point.load()
 from runschema.system import AtomsGroup, System, Atoms
 from nomad.datamodel.metainfo.workflow import Link, TaskReference
-import simulationworkflowschema
-simulationworkflowschema.simulationworkflow_schema_entry_point.load()
 from simulationworkflowschema.molecular_dynamics import (
     DiffusionConstantValues,
     MeanSquaredDisplacement,
