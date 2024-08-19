@@ -16,52 +16,103 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-from .general import (
-    SimulationWorkflow,
-    SimulationWorkflowMethod,
-    SimulationWorkflowResults,
-    ParallelSimulation,
-    SerialSimulation,
-    BeyondDFT,
-    DFTMethod,
-    ElectronicStructureOutputs,
-    MagneticOutputs,
+import importlib
+
+from nomad.config.models.plugins import SchemaPackageEntryPoint
+
+
+__all__ = [
+    'SimulationWorkflow',
+    'SimulationWorkflowMethod',
+    'SimulationWorkflowResults',
+    'ParallelSimulation',
+    'SerialSimulation',
+    'BeyondDFT',
+    'DFTMethod',
+    'ElectronicStructureOutputs',
+    'MagneticOutputs',
+    'SinglePoint',
+    'SinglePointMethod',
+    'SinglePointResults',
+    'GeometryOptimization',
+    'GeometryOptimizationMethod',
+    'GeometryOptimizationResults',
+    'MolecularDynamics',
+    'MolecularDynamicsMethod',
+    'MolecularDynamicsResults',
+    'Phonon',
+    'PhononMethod',
+    'PhononResults',
+    'EquationOfState',
+    'EquationOfStateMethod',
+    'EquationOfStateResults',
+    'ChemicalReaction',
+    'ChemicalReactionMethod',
+    'ChemicalReactionResults',
+    'Elastic',
+    'ElasticMethod',
+    'ElasticResults',
+    'FirstPrinciplesPlusTB',
+    'FirstPrinciplesPlusTBMethod',
+    'FirstPrinciplesPlusTBResults',
+    'DFTPlusGW',
+    'DFTPlusGWMethod',
+    'DFTPlusGWResults',
+    'XS',
+    'XSMethod',
+    'XSResults',
+    'DFTPlusTBPlusDMFT',
+    'DFTPlusTBPlusDMFTMethod',
+    'DFTPlusTBPlusDMFTResults',
+    'DMFTPlusMaxEnt',
+    'DMFTPlusMaxEntMethod',
+    'DMFTPlusMaxEntResults',
+    'PhotonPolarization',
+    'PhotonPolarizationMethod',
+    'PhotonPolarizationResults',
+    'Thermodynamics',
+    'ThermodynamicsMethod',
+    'ThermodynamicsResults',
+]
+
+
+def load_modules():
+    sub_modules = [
+        'general',
+        'single_point',
+        'geometry_optimization',
+        'molecular_dynamics',
+        'phonon',
+        'equation_of_state',
+        'chemical_reaction',
+        'elastic',
+        'tb',
+        'gw',
+        'xs',
+        'dmft',
+        'max_ent',
+        'photon_polarization',
+        'thermodynamics',
+    ]
+    import simulationworkflowschema
+
+    for name in sub_modules:
+        sub_module = importlib.import_module(f'simulationworkflowschema.{name}')
+        for method in sub_module.__dict__:
+            if method in __all__:
+                setattr(simulationworkflowschema, method, sub_module.__dict__[method])
+
+
+class SimulationWorkflowSchemaEntryPoint(SchemaPackageEntryPoint):
+    def load(self):
+        load_modules()
+
+        from .general import m_package
+
+        return m_package
+
+
+simulationworkflow_schema_entry_point = SimulationWorkflowSchemaEntryPoint(
+    name='SimulationWorkflowSchema',
+    description='Schema for the nomad simulation workflows.',
 )
-from .single_point import SinglePoint, SinglePointMethod, SinglePointResults
-from .geometry_optimization import (
-    GeometryOptimization,
-    GeometryOptimizationMethod,
-    GeometryOptimizationResults,
-)
-from .molecular_dynamics import (
-    MolecularDynamics,
-    MolecularDynamicsMethod,
-    MolecularDynamicsResults,
-)
-from .phonon import Phonon, PhononMethod, PhononResults
-from .equation_of_state import (
-    EquationOfState,
-    EquationOfStateMethod,
-    EquationOfStateResults,
-)
-from .chemical_reaction import (
-    ChemicalReaction,
-    ChemicalReactionMethod,
-    ChemicalReactionResults,
-)
-from .elastic import Elastic, ElasticMethod, ElasticResults
-from .tb import (
-    FirstPrinciplesPlusTB,
-    FirstPrinciplesPlusTBMethod,
-    FirstPrinciplesPlusTBResults,
-)
-from .gw import DFTPlusGW, DFTPlusGWMethod, DFTPlusGWResults
-from .xs import XS, XSMethod, XSResults
-from .dmft import DFTPlusTBPlusDMFT, DFTPlusTBPlusDMFTMethod, DFTPlusTBPlusDMFTResults
-from .max_ent import DMFTPlusMaxEnt, DMFTPlusMaxEntMethod, DMFTPlusMaxEntResults
-from .photon_polarization import (
-    PhotonPolarization,
-    PhotonPolarizationMethod,
-    PhotonPolarizationResults,
-)
-from .thermodynamics import Thermodynamics, ThermodynamicsMethod, ThermodynamicsResults

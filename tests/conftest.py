@@ -83,25 +83,33 @@ from simulationworkflowschema.molecular_dynamics import (
     RadialDistributionFunctionValues,
 )
 from simulationworkflowschema.equation_of_state import EOSFit
-from simulationworkflowschema import (
+from simulationworkflowschema.molecular_dynamics import (
+    MolecularDynamics,
     MolecularDynamicsMethod,
     MolecularDynamicsResults,
-    SinglePoint,
+)
+from simulationworkflowschema.single_point import SinglePoint
+from simulationworkflowschema.geometry_optimization import (
     GeometryOptimization,
     GeometryOptimizationMethod,
-    Elastic,
-    ElasticResults,
-    MolecularDynamics,
+)
+from simulationworkflowschema.elastic import Elastic, ElasticResults
+from simulationworkflowschema.equation_of_state import (
     EquationOfState,
     EquationOfStateResults,
-    DFTPlusGWMethod,
-    DFTPlusGW as GWworkflow,
+)
+from simulationworkflowschema.gw import DFTPlusGWMethod, DFTPlusGW as GWworkflow
+from simulationworkflowschema.dmft import (
     DFTPlusTBPlusDMFTMethod,
     DFTPlusTBPlusDMFT as DMFTworkflow,
+)
+from simulationworkflowschema.photon_polarization import (
     PhotonPolarization,
     PhotonPolarizationMethod,
     PhotonPolarizationResults,
-    XS as XSworkflow,
+)
+from simulationworkflowschema.xs import XS as XSworkflow
+from simulationworkflowschema.max_ent import (
     DMFTPlusMaxEntMethod,
     DMFTPlusMaxEnt as MaxEntworkflow,
 )
