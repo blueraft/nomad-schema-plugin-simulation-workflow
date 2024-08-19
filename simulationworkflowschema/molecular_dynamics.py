@@ -1245,11 +1245,11 @@ class MeanSquaredDisplacement(CorrelationFunction):
                 else []
             )
             sec_diffusion.error_type = 'Pearson correlation coefficient'
-            sec_diffusion.errors = (
-                self._msd_results['error_diffusion_constant'][i_type]
-                if self._msd_results.get('error_diffusion_constant') is not None
-                else []
-            )
+            if self._msd_results.get('error_diffusion_constant') is not None:
+                errors = self._msd_results['error_diffusion_constant'][i_type]
+                sec_diffusion.errors = (
+                    list(errors) if isinstance(errors, (list, np.ndarray)) else [errors]
+                )
 
 
 class MolecularDynamicsResults(ThermodynamicsResults):

@@ -22,12 +22,6 @@ from ase import Atoms as aseAtoms
 import ase.build
 import re
 
-# Load schemas first
-import runschema
-runschema.run_schema_entry_point.load()
-import simulationworkflowschema
-simulationworkflowschema.simulationworkflow_schema_entry_point.load()
-
 from nomad.units import ureg
 from nomad.normalizing import normalizers
 from nomad.utils import get_logger
@@ -89,16 +83,36 @@ from simulationworkflowschema.molecular_dynamics import (
     RadialDistributionFunctionValues,
 )
 from simulationworkflowschema.equation_of_state import EOSFit
-from simulationworkflowschema.molecular_dynamics import MolecularDynamics, MolecularDynamicsMethod, MolecularDynamicsResults
+from simulationworkflowschema.molecular_dynamics import (
+    MolecularDynamics,
+    MolecularDynamicsMethod,
+    MolecularDynamicsResults,
+)
 from simulationworkflowschema.single_point import SinglePoint
-from simulationworkflowschema.geometry_optimization import GeometryOptimization, GeometryOptimizationMethod
+from simulationworkflowschema.geometry_optimization import (
+    GeometryOptimization,
+    GeometryOptimizationMethod,
+)
 from simulationworkflowschema.elastic import Elastic, ElasticResults
-from simulationworkflowschema.equation_of_state import EquationOfState, EquationOfStateResults
+from simulationworkflowschema.equation_of_state import (
+    EquationOfState,
+    EquationOfStateResults,
+)
 from simulationworkflowschema.gw import DFTPlusGWMethod, DFTPlusGW as GWworkflow
-from simulationworkflowschema.dmft import DFTPlusTBPlusDMFTMethod, DFTPlusTBPlusDMFT as DMFTworkflow
-from simulationworkflowschema.photon_polarization import PhotonPolarization, PhotonPolarizationMethod, PhotonPolarizationResults
+from simulationworkflowschema.dmft import (
+    DFTPlusTBPlusDMFTMethod,
+    DFTPlusTBPlusDMFT as DMFTworkflow,
+)
+from simulationworkflowschema.photon_polarization import (
+    PhotonPolarization,
+    PhotonPolarizationMethod,
+    PhotonPolarizationResults,
+)
 from simulationworkflowschema.xs import XS as XSworkflow
-from simulationworkflowschema.max_ent import DMFTPlusMaxEntMethod, DMFTPlusMaxEnt as MaxEntworkflow
+from simulationworkflowschema.max_ent import (
+    DMFTPlusMaxEntMethod,
+    DMFTPlusMaxEnt as MaxEntworkflow,
+)
 
 
 LOGGER = get_logger(__name__)
