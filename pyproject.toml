@@ -12,6 +12,8 @@ license = { text = "Apache-2.0" }
 dependencies = [
     "nomad-lab>=1.3.6.dev1",
     "nomad-schema-plugin-run@git+https://github.com/nomad-coe/nomad-schema-plugin-run.git@d30f1594d831a91b3a4db56a0bc5e7dc446bbffc",
+    "nomad-normalizer-plugin-bandstructure@git+https://github.com/nomad-coe/nomad-normalizer-plugin-bandstructure.git@669f2c899bc4013975b1b38ca8af630fe2e8a930",
+    "nomad-normalizer-plugin-system@git+https://github.com/nomad-coe/nomad-normalizer-plugin-system.git@c849c947707f617e434e3ac95249ab33a90b9415",
 ]
 
 [project.urls]
