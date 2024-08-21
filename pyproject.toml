@@ -10,8 +10,8 @@ readme = "README.md"
 authors = [{ name = "The NOMAD Authors" }]
 license = { text = "Apache-2.0" }
 dependencies = [
-    "nomad-lab>=1.2.0",
-    "nomad-schema-plugin-run@git+https://github.com/nomad-coe/nomad-schema-plugin-run.git@develop",
+    "nomad-lab>=1.3.6.dev1",
+    "nomad-schema-plugin-run@git+https://github.com/nomad-coe/nomad-schema-plugin-run.git@92d120dc4c5f7f4bcd94990ed009f8ac0019acec",
 ]
 
 [project.urls]
@@ -24,6 +24,10 @@ dev = [
     "pytest-timeout==1.4.2",
     "pytest-cov==2.7.1",
     "ruff==0.1.4",
+]
+tests = [
+    "nomad-normalizer-plugin-bandstructure@git+https://github.com/nomad-coe/nomad-normalizer-plugin-bandstructure.git@develop",
+    "nomad-normalizer-plugin-system@git+https://github.com/nomad-coe/nomad-normalizer-plugin-system.git@develop",
 ]
 
 [tool.ruff]
